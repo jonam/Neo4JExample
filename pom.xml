@@ -5,30 +5,30 @@
     <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-rest-graphdb</artifactId>
-        <version>1.7</version>
+        <version>1.8-SNAPSHOT</version>
     </dependency>
     <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-rest-graphdb</artifactId>
-        <version>1.7</version>
+        <version>1.8-SNAPSHOT</version>
         <classifier>sources</classifier>
     </dependency>
     <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-rest-graphdb</artifactId>
-        <version>1.7</version>
+        <version>1.8-SNAPSHOT</version>
         <classifier>javadoc</classifier>
     </dependency>
     <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-rest-graphdb</artifactId>
-        <version>1.7</version>
+        <version>1.8-SNAPSHOT</version>
         <classifier>tests</classifier>
     </dependency>
     <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-rest-graphdb</artifactId>
-        <version>1.7</version>
+        <version>1.8-SNAPSHOT</version>
         <classifier>test-sources</classifier>
     </dependency>
   </dependencies>
