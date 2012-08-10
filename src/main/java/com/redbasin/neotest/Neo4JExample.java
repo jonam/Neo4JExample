@@ -16,7 +16,9 @@ import org.neo4j.rest.graphdb.index.RestIndex;
 //import org.neo4j.rest.graphdb.RestGraphDatabase;
 
 /**
- *
+ * This code works with 1.7 but not with 1.8-SNAPSHOT.
+ * Specifically fetching the node from index fetches no hits.
+
  * @author redbasin
  */
 public class Neo4JExample {
@@ -72,11 +74,12 @@ public class Neo4JExample {
         try {
             myIndex = graphDb.index().forNodes(indexName);
             IndexHits<Node> pNodeHits = myIndex.get(key, value);
-            if (pNodeHits.size() > 0) {  
+            if (pNodeHits.size() > 0) {   // this returns none 1.8-SNAPSHOT
                 firstNode = pNodeHits.getSingle(); 
                 System.out.println("firstNode from index = " + firstNode);
             }
             pNodeHits.close();
+            // the following line prints if property directly fetched
             System.out.println("firstNode id" + firstNode.toString());
         } finally {
             tx.finish();
