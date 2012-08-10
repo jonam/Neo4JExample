@@ -32,7 +32,7 @@ public class Neo4JExample {
     
     private static void setup() throws URISyntaxException {
         //graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-        graphDb = new RestGraphDatabase("http://saibaba.local:7474/db/data");
+        graphDb = new RestGraphDatabase("http://localhost:7474/db/data");
         registerShutdownHook( graphDb );
     }
     
@@ -53,19 +53,13 @@ public class Neo4JExample {
         
         RestIndex<Node> myIndex;
         String indexName = "myindex";
-        String key = "choot";
+        String key = "foo";
         String value = "Hello";
         Transaction tx = graphDb.beginTx();
         try {
     // Mutating operations go here
             firstNode = graphDb.createNode();
             firstNode.setProperty(key, value);
-            /*
-            secondNode = graphDb.createNode();
-            secondNode.setProperty( "message", "World!" );
-            relationship = firstNode.createRelationshipTo( secondNode, RelTypes.INHIBITS );
-            relationship.setProperty( "message", "brave heart Neo4j " ); 
-            */
             myIndex = graphDb.index().forNodes(indexName);
             myIndex.add(firstNode, key, value);
             tx.success();
@@ -84,10 +78,6 @@ public class Neo4JExample {
             }
             pNodeHits.close();
             System.out.println("firstNode id" + firstNode.toString());
-            //System.out.println("secondNode id" + secondNode.toString());
-            //System.out.print( firstNode.getProperty( "message" ) );
-            //System.out.print( relationship.getProperty( "message" ) );
-            //System.out.print( secondNode.getProperty( "message" ) );
         } finally {
             tx.finish();
         }
