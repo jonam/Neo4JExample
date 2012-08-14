@@ -86,7 +86,7 @@ public class Neo4JExample {
            we did not open a fresh transaction (and close) the previous
            one. In 1.7 this is not required (as per Michael Hunger)
            as the transaction management was a no-op in 1.7. */
-        if (pNodeHits.size() > 0) {   // this returns none 1.8-SNAPSHOT
+        if (pNodeHits.size() > 0) {
                 firstNode = pNodeHits.getSingle(); 
                 System.out.println("firstNode from index = " + firstNode);
             }
