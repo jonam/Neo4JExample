@@ -34,7 +34,7 @@ public class Neo4JExample {
     
     private static void setup() throws URISyntaxException {
         //graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-        graphDb = new RestGraphDatabase("http://localhost:7474/db/data");
+        graphDb = new RestGraphDatabase("http://saibaba.local:7474/db/data");
         registerShutdownHook( graphDb );
     }
     
@@ -70,17 +70,26 @@ public class Neo4JExample {
             tx.finish();
         }
         
+        IndexHits<Node> pNodeHits = null;
         tx = graphDb.beginTx();
         try {
             myIndex = graphDb.index().forNodes(indexName);
-            IndexHits<Node> pNodeHits = myIndex.get(key, value);
-            if (pNodeHits.size() > 0) {   // this returns none 1.8-SNAPSHOT
+            pNodeHits = myIndex.get(key, value);
+            tx.success();
+        } finally {
+            tx.finish();
+        }
+         
+        tx = graphDb.beginTx();
+        try {
+        if (pNodeHits.size() > 0) {   // this returns none 1.8-SNAPSHOT
                 firstNode = pNodeHits.getSingle(); 
                 System.out.println("firstNode from index = " + firstNode);
             }
             pNodeHits.close();
             // the following line prints if property directly fetched
             System.out.println("firstNode id" + firstNode.toString());
+            tx.success();
         } finally {
             tx.finish();
         }
