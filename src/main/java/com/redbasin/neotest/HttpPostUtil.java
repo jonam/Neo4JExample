@@ -31,14 +31,14 @@ import org.apache.http.util.EntityUtils;
  */
 public class HttpPostUtil {
     
-    private static String hostname = "saibaba.local";
+    private static String hostname = "localhost";
     private static int port = 7474;
     protected static final Log log = LogFactory.getLog(HttpPostUtil.class);
     
     public static void main(String[] args) throws UnsupportedEncodingException, UnknownHostException, IOException, HttpException {
         
         //String uri = "/db/data/index/node/";
-        //String host = "saibaba.local";
+        //String host = "localhost";
         //Integer port = 7474;
         String message =  "{" +
                "\"name\" : \"fulltext\"," + 

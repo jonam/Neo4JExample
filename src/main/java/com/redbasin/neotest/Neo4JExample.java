@@ -4,7 +4,12 @@
  */
 package com.redbasin.neotest;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.net.UnknownHostException;
+import org.apache.http.HttpException;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.RelationshipType;
@@ -12,6 +17,8 @@ import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.index.IndexHits;
 import org.neo4j.rest.graphdb.RestGraphDatabase;
 import org.neo4j.rest.graphdb.index.RestIndex;
+//import org.neo4j.rest.graphdb.RestGraphDatabase;
+//import org.neo4j.rest.graphdb.index.RestIndex;
 //import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 //import org.neo4j.rest.graphdb.RestGraphDatabase;
 
@@ -34,7 +41,7 @@ public class Neo4JExample {
     
     private static void setup() throws URISyntaxException {
         //graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
-        graphDb = new RestGraphDatabase("http://saibaba.local:7474/db/data");
+        graphDb = new RestGraphDatabase("http://localhost:7474/db/data");
         registerShutdownHook( graphDb );
     }
     
@@ -49,6 +56,8 @@ public class Neo4JExample {
         }
     } );
     }
+    
+    
     
     public static void main(String[] args) throws Exception {
         setup();
