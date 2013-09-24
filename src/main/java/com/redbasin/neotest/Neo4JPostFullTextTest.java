@@ -19,9 +19,6 @@ import org.neo4j.rest.graphdb.index.RestIndex;
 
 
 /**
- * This code works with 1.7 but not with 1.8-SNAPSHOT.
- * Specifically fetching the node from index fetches no hits.
-
  * @author redbasin
  */
 public class Neo4JPostFullTextTest {
