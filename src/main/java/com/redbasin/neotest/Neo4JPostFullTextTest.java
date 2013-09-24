@@ -19,17 +19,22 @@ import org.neo4j.rest.graphdb.index.RestIndex;
 
 
 /**
+ * We are trying to POST content larger than 3870 bytes to 
+ * Neo4J full text index. And we seem to get errors when we do that.
+ * Size smaller than or equal to 3870 seems to work fine.
+ * There are two symptoms. The first one is the invalid header for
+ * size 3871 and higher until around 3995. It also takes a while 
+ * before it comes back with the "invalid header" message. After 
+ * that we start getting http status 500. 
+ *
+ * Perhaps there is a way around this? Is there something wrong 
+ * we are doing?
+ *
  * @author redbasin
  */
 public class Neo4JPostFullTextTest {
-    private static enum RelTypes implements RelationshipType {
-       INHIBITS
-    }
-    
     private static RestGraphDatabase graphDb;
     private static Node firstNode;
-    private static Node secondNode;
-    private static Relationship relationship;
     private static final String DB_PATH= "neo4j-shortest-path";
     
     
