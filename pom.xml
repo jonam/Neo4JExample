@@ -21,7 +21,8 @@
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-rest-graphdb</artifactId>
         <!-- <artifactId>neo4j</artifactId> -->
-        <version>1.8</version>
+        <!-- tried 1.8.M07 but didn't seem to help -->
+        <version>1.8</version>  <!-- this is for the REST API -->
         <!-- <version>1.9.3</version> -->
     </dependency>
     <dependency>
